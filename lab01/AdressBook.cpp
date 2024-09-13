@@ -4,79 +4,81 @@
 using namespace std;
 
 void AddressBook::addContact() {
-    string name, phone, email;
-    cout << "Ââåäèòå èìÿ: ";
+    string name;
+    string phone;
+    string email;
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã¬Ã¿: ";
     cin >> name;
-    cout << "Ââåäèòå òåëåôîí: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã²Ã¥Ã«Ã¥Ã´Ã®Ã­: ";
     cin >> phone;
-    cout << "Ââåäèòå email: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ email: ";
     cin >> email;
 
     contacts.emplace_back(name, phone, email);
-    cout << "Êîíòàêò äîáàâëåí!\n";
+    cout << "ÃŠÃ®Ã­Ã²Ã ÃªÃ² Ã¤Ã®Ã¡Ã Ã¢Ã«Ã¥Ã­!\n";
 }
 
 void AddressBook::editContact() {
     string name;
-    cout << "Ââåäèòå èìÿ êîíòàêòà äëÿ ðåäàêòèðîâàíèÿ: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã¬Ã¿ ÃªÃ®Ã­Ã²Ã ÃªÃ²Ã  Ã¤Ã«Ã¿ Ã°Ã¥Ã¤Ã ÃªÃ²Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¿: ";
     cin >> name;
 
     for (auto& contact : contacts) {
         if (contact.name == name) {
-            cout << "Ðåäàêòèðîâàíèå êîíòàêòà " << contact.name << endl;
-            cout << "Ââåäèòå íîâîå èìÿ: ";
+            cout << "ÃÃ¥Ã¤Ã ÃªÃ²Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¥ ÃªÃ®Ã­Ã²Ã ÃªÃ²Ã  " << contact.name << endl;
+            cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã®Ã¢Ã®Ã¥ Ã¨Ã¬Ã¿: ";
             cin >> contact.name;
-            cout << "Ââåäèòå íîâûé òåëåôîí: ";
+            cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã®Ã¢Ã»Ã© Ã²Ã¥Ã«Ã¥Ã´Ã®Ã­: ";
             cin >> contact.phone;
-            cout << "Ââåäèòå íîâûé email: ";
+            cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã®Ã¢Ã»Ã© email: ";
             cin >> contact.email;
-            cout << "Êîíòàêò îáíîâëåí!\n";
+            cout << "ÃŠÃ®Ã­Ã²Ã ÃªÃ² Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¥Ã­!\n";
             return;
         }
     }
-    cout << "Êîíòàêò íå íàéäåí!\n";
+    cout << "ÃŠÃ®Ã­Ã²Ã ÃªÃ² Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­!\n";
 }
 
 void AddressBook::deleteContact() {
     string name;
-    cout << "Ââåäèòå èìÿ êîíòàêòà äëÿ óäàëåíèÿ: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã¬Ã¿ ÃªÃ®Ã­Ã²Ã ÃªÃ²Ã  Ã¤Ã«Ã¿ Ã³Ã¤Ã Ã«Ã¥Ã­Ã¨Ã¿: ";
     cin >> name;
 
     for (auto it = contacts.begin(); it != contacts.end(); ++it) {
         if (it->name == name) {
             contacts.erase(it);
-            cout << "Êîíòàêò óäàëåí!\n";
+            cout << "ÃŠÃ®Ã­Ã²Ã ÃªÃ² Ã³Ã¤Ã Ã«Ã¥Ã­!\n";
             return;
         }
     }
-    cout << "Êîíòàêò íå íàéäåí!\n";
+    cout << "ÃŠÃ®Ã­Ã²Ã ÃªÃ² Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­!\n";
 }
 
 void AddressBook::searchContact() const {
     string name;
-    cout << "Ââåäèòå èìÿ äëÿ ïîèñêà: ";
+    cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¨Ã¬Ã¿ Ã¤Ã«Ã¿ Ã¯Ã®Ã¨Ã±ÃªÃ : ";
     cin >> name;
 
     for (const auto& contact : contacts) {
         if (contact.name == name) {
-            cout << "Èìÿ: " << contact.name << endl;
-            cout << "Òåëåôîí: " << contact.phone << endl;
+            cout << "ÃˆÃ¬Ã¿: " << contact.name << endl;
+            cout << "Ã’Ã¥Ã«Ã¥Ã´Ã®Ã­: " << contact.phone << endl;
             cout << "Email: " << contact.email << endl;
             return;
         }
     }
-    cout << "Êîíòàêò íå íàéäåí!\n";
+    cout << "ÃŠÃ®Ã­Ã²Ã ÃªÃ² Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­!\n";
 }
 
 void AddressBook::displayContacts() const {
     if (contacts.empty()) {
-        cout << "Àäðåñíàÿ êíèãà ïóñòà.\n";
+        cout << "Ã€Ã¤Ã°Ã¥Ã±Ã­Ã Ã¿ ÃªÃ­Ã¨Ã£Ã  Ã¯Ã³Ã±Ã²Ã .\n";
         return;
     }
 
     for (const auto& contact : contacts) {
-        cout << "Èìÿ: " << contact.name << endl;
-        cout << "Òåëåôîí: " << contact.phone << endl;
+        cout << "ÃˆÃ¬Ã¿: " << contact.name << endl;
+        cout << "Ã’Ã¥Ã«Ã¥Ã´Ã®Ã­: " << contact.phone << endl;
         cout << "Email: " << contact.email << endl;
         cout << "-------------------\n";
     }
